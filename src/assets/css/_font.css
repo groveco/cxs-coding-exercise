@@ -1,0 +1,46 @@
+:root {
+  /**
+  * @tokens Font Sizes
+  * @presenter FontSize
+  */
+  --font-size-50: 0.75rem;
+  --font-size-75: 0.875rem;
+  --font-size-100: 1rem;
+  --font-size-200: 1.125rem;
+  --font-size-300: 1.25rem;
+  --font-size-400: 1.5rem;
+  --font-size-500: 2rem;
+  --font-size-600: 2.5rem;
+  --font-size-700: 3rem;
+
+  /**
+  * @tokens Font Families
+  * @presenter FontFamily
+  */
+  --font-family-display: 'ValueSerif Bold', Georgia Bold, serif;
+  --font-family-default-regular: 'ValueSans Regular', Helvetica, arial,
+    sans-serif;
+  --font-family-default-medium: 'ValueSans Medium', Helvetica, arial, sans-serif;
+
+  /**
+  * @tokens Font Weights
+  * @presenter FontWeight
+  */
+  --font-weight-default: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  /**
+  * @tokens Line Heights
+  * @presenter LineHeight
+  */
+  --line-height-tight: 1.2;
+  --line-height-default: 1.5;
+
+  /**
+  * @tokens Letter Spacing
+  * @presenter Spacing
+  */
+  --letter-spacing-default: 0;
+  --letter-spacing-loose: 0.125rem;
+}

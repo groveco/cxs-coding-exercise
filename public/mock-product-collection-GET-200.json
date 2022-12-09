@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "data": {
+    "id": "product-collection-id",
+    "type": "waitlist",
+    "relationships": {
+      "products": {
+        "data": [
+          { "id": 100 },
+          { "id": 102 }
+        ]
+      }
+    }
+  }
+}
