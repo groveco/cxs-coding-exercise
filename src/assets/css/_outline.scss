@@ -1,0 +1,30 @@
+/// Generate Skylights custom outline style rules.
+/// @access private
+/// @param {boolean} $on-dark - If true, will style the outline for a dark surface.
+/// @output Generate focus state styling.
+@mixin outline-style($on-dark: false) {
+  outline-width: 1px;
+  outline-style: dashed;
+  outline-offset: var(--spacing-1x);
+
+  @if $on-dark {
+    outline-color: var(--color-white);
+  } @else {
+    outline-color: var(--text-color-primary);
+  }
+}
+
+/// Generate Skylight's custom outline for component focused states.
+/// @access public
+/// @param {boolean} $include-focus - If true, will provide the :focus-visible selector.
+/// @param {boolean} $on-dark - If true, will style the outline for a dark surface.
+/// @output Focus state styling.
+@mixin outline($include-focus: true, $on-dark: false) {
+  @if $include-focus {
+    &:focus-visible {
+      @include outline-style($on-dark);
+    }
+  } @else {
+    @include outline-style($on-dark);
+  }
+}

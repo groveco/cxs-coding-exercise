@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "data": {
+    "id": "product-collection-item-id",
+    "relationships": {
+      "products": {
+        "data": {
+          "id": "SUBSTITUTE-PRODUCT-ID-TERM"
+        }
+      }
+    }
+  }
+}

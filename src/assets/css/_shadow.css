@@ -1,0 +1,11 @@
+:root {
+  /**
+  * @tokens Shadow
+  * @presenter Shadow
+  */
+
+  --shadow-default-top: 0 calc(var(--spacing-1x) * -1) var(--spacing-3x) 0
+    rgba(0, 0, 0, 0.1);
+  --shadow-default-bottom: 0 var(--spacing-1x) var(--spacing-3x) 0
+    rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,203 @@
+@import '_breakpoints';
+
+/// Construct a collection of design tokens into a typography *style*.
+/// @access private
+@mixin build-type(
+  $family,
+  $weight,
+  $size,
+  $line-height: '--line-height-default',
+  $letter-spacing: null
+) {
+  font-family: var(#{$family});
+  font-weight: var(#{$weight});
+  font-size: var(#{$size});
+
+  @if type-of($line-height) == string {
+    line-height: var(#{$line-height});
+  } @else {
+    // We are assuming $line-height is not referencing a design token.
+    line-height: #{$line-height};
+  }
+
+  @if type-of($letter-spacing) == string {
+    letter-spacing: var(#{$letter-spacing});
+  } @else {
+    letter-spacing: #{$letter-spacing};
+  }
+
+  // Defaults for all constructed typography rules
+  // The `color` rule will need to be explicitly overridden based on the surface text
+  // is being displayed on.
+  color: var(--text-color-primary);
+  font-feature-settings: 'ss02';
+  text-rendering: optimizeLegibility;
+}
+
+/// Generate the necessary font stylings for non-brand heading text.
+/// @access public
+/// @param {string} $variant - The heading typography variant to construct
+/// @output Constructs a collection of default heading font rules
+@mixin type-heading($variant) {
+  $heading-sizes: (
+    '1': '--font-size-500',
+    '2': '--font-size-400',
+    '3': '--font-size-300',
+    '4': '--font-size-200',
+    '5': '--font-size-100',
+  );
+
+  @if not map-get($heading-sizes, quote($variant)) {
+    @error "Unknown heading typography variant '#{$variant}'. "
+      + "Available variants: #{keys($heading-sizes)}";
+  }
+
+  @include build-type(
+    '--font-family-default-medium',
+    '--font-weight-medium',
+    map-get($heading-sizes, quote($variant)),
+    '--line-height-tight'
+  );
+}
+
+/// Generate the necessary font stylings for non-brand body text.
+/// @access public
+/// @param {string} $variant - The body typography variant to construct
+/// @param {boolean} $medium [false] - If true, will construct using the medium font-face
+/// @output Constructs a collection of body font rules
+/// @example
+///   @include body-type('m');
+///   // Constructs a collection of medium body font rules (using the default font-face)
+/// @example
+///   @include body-type('m', true);
+///   // Constructs a collection of medium body font rules (using the medium font-face)
+@mixin type-body($variant, $medium: false) {
+  $body-styles: (
+    'l': (
+      font-size: '--font-size-200',
+      line-height: '--line-height-default',
+    ),
+    'm': (
+      font-size: '--font-size-100',
+      line-height: '--line-height-default',
+    ),
+    's': (
+      font-size: '--font-size-75',
+      line-height: '--line-height-tight',
+    ),
+    'xs': (
+      font-size: '--font-size-50',
+      line-height: '--line-height-tight',
+    ),
+  );
+
+  @if not map-get($body-styles, to-lower-case($variant)) {
+    @error "Unknown body typography variant '#{$variant}'. "
+      + "Available variants: #{map-keys($body-styles)}";
+  }
+
+  $font-family: '--font-family-default-regular';
+  $font-weight: '--font-weight-default';
+
+  @if $medium {
+    $font-family: '--font-family-default-medium';
+    $font-weight: '--font-weight-medium';
+  }
+
+  @include build-type(
+    $font-family,
+    $font-weight,
+    map-get(map-get($body-styles, to-lower-case($variant)), 'font-size'),
+    map-get(map-get($body-styles, to-lower-case($variant)), 'line-height')
+  );
+}
+
+/// Generate the necessary font stylings for section text.
+/// @access public
+/// @param {string} $variant - The section typography variant to construct
+/// @output Constructs a collection of section font rules
+@mixin type-section($variant) {
+  $section-styles: (
+    'm': (
+      font-size: '--font-size-75',
+      letter-spacing: '--letter-spacing-loose',
+    ),
+    's': (
+      font-size: '--font-size-50',
+      letter-spacing: 0.1rem,
+    ),
+  );
+
+  @if not map-get($section-styles, to-lower-case($variant)) {
+    @error "Unknown section typography variant '#{$variant}'. "
+      + "Available variants: #{map-keys($section-styles)}";
+  }
+
+  @include build-type(
+    '--font-family-default-medium',
+    '--font-weight-medium',
+    map-get(map-get($section-styles, to-lower-case($variant)), 'font-size'),
+    1,
+    map-get(map-get($section-styles, to-lower-case($variant)), 'letter-spacing')
+  );
+
+  text-transform: uppercase;
+}
+
+/// Constructs the necessary font stylings for branded display text.
+/// @access public
+/// @param {string} $variant - The branded display typography variant to construct
+/// @output Constructs a collection of branded display font rules
+@mixin type-brand-display($variant) {
+  $display-sizes: (
+    '1': (
+      small: '--font-size-500',
+      large: '--font-size-700',
+    ),
+    '2': (
+      small: '--font-size-400',
+      large: '--font-size-600',
+    ),
+  );
+
+  @if not map-get($display-sizes, quote($variant)) {
+    @error "Unknown brand display typography variant '#{$variant}'. "
+      + "Available variants: #{map-keys($display-sizes)}";
+  }
+
+  @include build-type(
+    '--font-family-display',
+    '--font-weight-medium',
+    map-get(map-get($display-sizes, quote($variant)), 'small'),
+    '--line-height-tight'
+  );
+
+  @include for-medium-up {
+    font-size: var(
+      #{map-get(map-get($display-sizes, quote($variant)), 'large')}
+    );
+  }
+}
+
+/// Constructs the necessary font stylings for branded heading text.
+/// @access public
+/// @param {string} $variant - The branded heading typography variant to construct
+/// @output Constructs a collection of branded heading font rules
+@mixin type-brand-heading($variant) {
+  $heading-sizes: (
+    '1': '--font-size-500',
+    '2': '--font-size-400',
+  );
+
+  @if not map-get($heading-sizes, quote($variant)) {
+    @error "Unknown brand heading typography variant '#{$variant}'. "
+      + "Available variants: #{map-keys($heading-sizes)}";
+  }
+
+  @include build-type(
+    '--font-family-display',
+    '--font-weight-medium',
+    map-get($heading-sizes, quote($variant)),
+    '--line-height-tight'
+  );
+}

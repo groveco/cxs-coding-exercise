@@ -1,0 +1,85 @@
+@import '_breakpoints';
+
+/**
+ * Below are the definitions for max widths for reach container size.
+ * These are based _mostly_ on breakpoint sizes.
+ *
+ * ```scss
+ * @include container-xsmall;
+ * @include container-small;
+ * @include container-medium;
+ * @include container-large;
+ * @include container-xlarge;
+ * ```
+ *
+ * You may need to build some responsive containers.
+ * In this case you should use this mixin in conjunction with breakpoint mixins.
+ *
+ * ```scss
+ * // Use the standard medium container by default
+ * @include container-medium;
+ * // For devices at large and greater widths, use a large container.
+ * @include for-large-up {
+ *   @include container-large;
+ * }
+ * ```
+ */
+$container-xSmall: $breakpoint-small;
+$container-small: $breakpoint-medium;
+$container-medium: $breakpoint-large;
+// We specifically do not want to tie the large maximum width to the large breakpoint.
+$container-large: 1400px;
+
+/// Construct a max width container.
+/// @access private
+@mixin build-container($max-width) {
+  --container-max: #{$max-width};
+  --container-margin: var(--spacing-4x);
+
+
+  @include for-medium-up {
+    --container-margin: var(--spacing-8x);
+  }
+
+  @include for-large-up {
+    --container-margin: calc(var(--spacing-8x) * 2);
+  }
+
+
+  display: grid;
+  grid-template-columns: 1fr min(var(--container-max), calc(100% - var(--container-margin) * 2)) 1fr;
+  column-gap: var(--container-margin);
+
+  > * {
+    grid-column: 2;
+  }
+}
+
+/// Generate an extra-small container.
+/// @access public
+/// @output Constructs the rules for a xsmall width container.
+@mixin container-xsmall {
+  @include build-container($container-xSmall)
+}
+
+/// Generate a small container.
+/// @access public
+/// @output Constructs the rules for a small width container.
+@mixin container-small {
+  @include build-container($container-small);
+}
+
+/// Generate a medium container.
+/// @access public
+/// @output Constructs the rules for a medium width container.
+@mixin container-medium {
+  @include build-container($container-medium);
+}
+
+/// Generate a large container.
+/// @access public
+/// @output Constructs the rules for a large width container.
+@mixin container-large {
+  @include build-container($container-large);
+}
+

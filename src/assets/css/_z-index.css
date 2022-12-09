@@ -1,0 +1,12 @@
+:root {
+  /**
+  * @tokens Z-Index
+  */
+  --z-index-default: 1; /* Default z-index for elements */
+  --z-index-float: 2; /* Used for floating elements on top of the default z-index */
+  --z-index-sticky: 3; /* Used for sticky interface elements */
+  --z-index-dropdown: 10; /* Used to stack dropdowns above the interface */
+  --z-index-popout: 20; /* Used for popouts and drawers that stack behind modals */
+  --z-index-tooltip: 99; /* Used for tooltips */
+  --z-index-modal: 200; /* Used to stack modals on top of all other elements */
+}

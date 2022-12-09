@@ -1,0 +1,30 @@
+:root {
+  /**
+  * @tokens Spacing
+  * @presenter Spacing
+  */
+  --spacing-halfx: 2px;
+  --spacing-1x: 4px;
+  --spacing-2x: 8px;
+  --spacing-3x: 12px;
+  --spacing-4x: 16px;
+  --spacing-6x: 24px;
+  --spacing-8x: 32px;
+  --spacing-10x: 40px;
+  --spacing-12x: 48px;
+  --spacing-24x: 96px;
+
+  /**
+   * @tokens Border Radius
+   * @presenter BorderRadius
+   */
+  --border-radius-default: 4px;
+  --border-radius-pill: 50%;
+
+  /**
+   * @tokens Element Height
+   * @presenter Spacing
+   */
+  --height-input-default: 48px;
+  --height-input-large: 56px;
+}

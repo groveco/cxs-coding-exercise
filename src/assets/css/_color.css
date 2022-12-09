@@ -1,0 +1,82 @@
+/* stylelint-disable-next-line no-duplicate-selectors */
+
+:root {
+  /**
+  * @tokens Color Palette
+  * @presenter Color
+  */
+  --color-white: #fff;
+  --color-navy: #033b4c;
+  --color-navy-dark: #022c39;
+  --color-teal: #008181;
+  --color-teal-dark: #007272;
+  --color-teal-darkest: #005656;
+  --color-slate-light: #88a5a5;
+  --color-slate: #4e7780;
+  --color-slate-dark: #3c5b62;
+  --color-green: #20852b;
+  --color-red: #cf3e30;
+  --color-mustard: #c28524;
+  --color-mustard-dark: #9e6c1d;
+  --color-cream: #f7f3e4;
+  --color-linen: #fcfaf3;
+  --color-frost: #f8fafb;
+  --color-khaki: #d4d3cd;
+  --color-khaki-dark: #969587;
+  --color-khaki-darkest: #5c5b50;
+
+  /**
+  * @tokens Text Colors
+  * @presenter Color
+  */
+  --text-color-primary: var(--color-navy);
+  --text-color-secondary: var(--color-slate);
+  --text-color-action-primary: var(--color-teal);
+  --text-color-action-primary-hover: var(--color-teal-dark);
+  --text-color-action-secondary: var(--color-slate);
+  --text-color-action-secondary-hover: var(--color-slate-dark);
+  --text-color-action-dark: var(--color-navy);
+  --text-color-action-dark-hover: var(--color-navy-dark);
+  --text-color-action-disabled: var(--color-khaki);
+  --text-color-action-disabled-content: var(--color-khaki-darkest);
+  --text-color-savings: var(--color-green);
+  --text-color-success: var(--color-green);
+  --text-color-failure: var(--color-red);
+  --text-color-emptystate: var(--color-khaki-darkest);
+  /* Dark font color variants */
+  --text-color-primary-ondark: var(--color-cream);
+  --text-color-secondary-ondark: var(--color-slate-light);
+  --text-color-action-primary-ondark: var(--color-cream);
+  --text-color-action-secondary-ondark: var(--color-slate-light);
+  --text-color-action-hover-ondark: var(--color-white);
+  --text-color-positive-ondark: var(--color-green);
+  --text-color-negative-ondark: var(--color-red);
+
+  /**
+  * @tokens Surface Colors
+  * @presenter Color
+  */
+  --surface-color-default: var(--color-white);
+  --surface-color-dark: var(--color-navy);
+  --surface-color-darker: var(--color-navy-dark);
+  --surface-color-cream: var(--color-cream);
+  --surface-color-linen: var(--color-linen);
+  --surface-color-frost: var(--color-frost);
+
+  /**
+  * @tokens Border Colors
+  * @presenter Color
+  */
+  --border-color-default: var(--color-khaki);
+  --border-color-interactive: var(--color-khaki-dark);
+  --border-color-interactive-hover: var(--color-khaki-darkest);
+  --border-color-success: var(--color-green);
+  --border-color-failure: var(--color-red);
+
+  /**
+  * @tokens Accent Colors
+  * @presenter Color
+  */
+  --accent-color: var(--color-mustard);
+  --accent-color-hover: var(--color-mustard-dark);
+}
