@@ -1,15 +1,7 @@
-# cxs-coding-challenge
+# cxs-coding-exercise
 
 ## Using this repo
-This repo contains the source code for a very simple single page Vue app. To work on the coding challenge, please create a new, private repo named `cxs-coding-challenge` in Github. Convert that new repo into a copy of this repo using the following:
-
-```
-git clone git@github.com:groveco/cxs-coding-challenge.git
-git remote add new-origin git@github.com:<your username>/cxs-coding-challenge.git
-git push new-origin
-git remote rm origin
-git remote rename new-origin origin
-```
+This repo contains the source code for a very simple single page Vue app. To work on the coding exercise, please [create a new, private repo from this template repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
 We will ask you to create a new branch in your repo for development.
 
@@ -43,9 +35,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 You will not need this for the exercise, but you are welcome to modify the configuration if you desire.
 
 ## The exercise
-Note the file [`src/components/WaitlistButton.vue`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/components/WaitlistButton.vue) which features a stub for a “waitlist” button. The purpose of this button is to allow the user to request a notification for when a product is back in stock.
+Note the file [`src/components/WaitlistButton.vue`](https://github.com/groveco/cxs-coding-exercise/blob/main/src/components/WaitlistButton.vue) which features a stub for a “waitlist” button. The purpose of this button is to allow the user to request a notification for when a product is back in stock.
 
-For this exercise, we want you to update this button component and its parent component [`src/components/ProductView.vue`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/components/ProductView.vue) such that they reflect two different states:
+For this exercise, we want you to update this button component and its parent component [`src/components/ProductView.vue`](https://github.com/groveco/cxs-coding-exercise/blob/main/src/components/ProductView.vue) such that they reflect two different states:
 
 1. (State 1) If the customer is not already subscribed to the displayed product’s availability:
     1. Display  “Notify Me” as the button text
@@ -69,11 +61,11 @@ Run `npm run serve`  to see how your component is functioning with your changes.
 There are a few major tasks to handle in this exercise:
 
 1. Identify the waitlist state by communicating with the backend REST API.
-    1. For the sake of this challenge all responses from the API will be mocked - use the `getWaitlist()` and `createWaitlistItem()` methods stubbed out at [`src/services/waitlist.js`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/services/waitlist.js) to make the requests.
-    2. You will want to parse the values resolved from `(await mockFetch(….)).json()` as needed to determine the products that the customer has currently “waitlisted”. The template data for the resolved values is at [`/public/mock-*.json`](https://github.com/groveco/cxs-coding-challenge/blob/main/public/). You can also check the Network tab to see the same template data when making requests to the API.
+    1. For the sake of this exercise all responses from the API will be mocked - use the `getWaitlist()` and `createWaitlistItem()` methods stubbed out at [`src/services/waitlist.js`](https://github.com/groveco/cxs-coding-exercise/blob/main/src/services/waitlist.js) to make the requests.
+    2. You will want to parse the values resolved from `(await mockFetch(….)).json()` as needed to determine the products that the customer has currently “waitlisted”. The template data for the resolved values is at [`/public/mock-*.json`](https://github.com/groveco/cxs-coding-exercise/blob/main/public/). You can also check the Network tab to see the same template data when making requests to the API.
         
 2. Keep track of the waitlist state with client side copies of the backend values.
-    1. There are different options for tracking and managing application state in the client. At Grove, we rely on Vue composables to organize application state. Therefore for this example we want you to write a composable [`useWaitlist()`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/composables/useWaitlist.js) that returns values and methods that the waitlist button will depend upon. Namely, the waitlist button component will rely on `useWaitlist()` return values to determine and update the waitlisted products. It is up to you to design the exact interface for the `useWaitlist()` composition.
+    1. There are different options for tracking and managing application state in the client. At Grove, we rely on Vue composables to organize application state. Therefore for this example we want you to write a composable [`useWaitlist()`](https://github.com/groveco/cxs-coding-exercise/blob/main/src/composables/useWaitlist.js) that returns values and methods that the waitlist button will depend upon. Namely, the waitlist button component will rely on `useWaitlist()` return values to determine and update the waitlisted products. It is up to you to design the exact interface for the `useWaitlist()` composition.
         
 3. Update the `WaitlistButton` component to use your `useWaitlist()` implementation and reflect the two states described above.
 
