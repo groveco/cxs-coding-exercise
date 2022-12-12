@@ -83,5 +83,5 @@ We ask that you spend about one day on this take-home exercise before submitting
 - Any major considerations you had in mind when updating WaitlistButton and the useWaitlist() composable
 - Any assumptions or caveats you’d like to share
 
-Make sure that the repo’s visibility has been updated to include the Grove organization, the Github users `rlkenion` and `rona-chong`. Then send an email to rachel.kenion-hanrath@grove.co CC rchong@grove.co with the link to the pull request. Thank you for your submission!
+Make sure that the repo’s visibility has been updated to include the Grove organization, or the Github users `rlkenion` and `rona-chong`. Then send an email to rachel.kenion-hanrath@grove.co CC rchong@grove.co with the link to the pull request. Thank you for your submission!
 
