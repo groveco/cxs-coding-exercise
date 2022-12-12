@@ -68,16 +68,23 @@ Run `npm run serve`  to see how your component is functioning with your changes.
 ## Implementation details
 There are a few major tasks to handle in this exercise:
 
-1. Identify the waitlist state by communicating with our backend. You can use the methods stubbed out at [`src/services/waitlist.js`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/services/waitlist.js) to accomplish this.
-    1. You will want to parse the values resolved from `(await mockFetch(….)).json()` as needed to determine the products that the customer has currently “waitlisted”. You can see the template data for the resolved values at [`/public/mock-*.json`](https://github.com/groveco/cxs-coding-challenge/blob/main/public/).
+1. Identify the waitlist state by communicating with the backend REST API.
+    1. For the sake of this challenge all responses from the API will be mocked - use the `getWaitlist()` and `createWaitlistItem()` methods stubbed out at [`src/services/waitlist.js`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/services/waitlist.js) to make the requests.
+    2. You will want to parse the values resolved from `(await mockFetch(….)).json()` as needed to determine the products that the customer has currently “waitlisted”. The template data for the resolved values is at [`/public/mock-*.json`](https://github.com/groveco/cxs-coding-challenge/blob/main/public/). You can also check the Network tab to see the same template data when making requests to the API.
         
 2. Keep track of the waitlist state with client side copies of the backend values.
     1. There are different options for tracking and managing application state in the client. At Grove, we rely on Vue composables to organize application state. Therefore for this example we want you to write a composable [`useWaitlist()`](https://github.com/groveco/cxs-coding-challenge/blob/main/src/composables/useWaitlist.js) that returns values and methods that the waitlist button will depend upon. Namely, the waitlist button component will rely on `useWaitlist()` return values to determine and update the waitlisted products. It is up to you to design the exact interface for the `useWaitlist()` composition.
         
 3. Update the `WaitlistButton` component to use your `useWaitlist()` implementation and reflect the two states described above.
 
+## Useful documentation
+If you are new to Vue, you may need to familiarize yourself with the Vue documentation and core concepts. Note that this app uses Vue 2 rather than Vue 3. Here are a few useful articles to get you started:
+* [What is Vue.js?](https://v2.vuejs.org/v2/guide/index.html#What-is-Vue-js)
+* [What is the Vue Composition API?](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api) 
+* [What is a Composable](https://vuejs.org/guide/reusability/composables.html#what-is-a-composable)
+
 ## Submission
-We ask that you spend about one day on this take-home exercise before submitting to us by the end of your work day on Tuesday 12/13. When done, create a pull request by pushing up the branch with your work to Github. Provide the following in the description of the pull request:
+We ask that you spend about one day on this take-home exercise before submitting to us by the end of your next work day. When done, create a pull request by pushing up the branch with your work to Github. Provide the following in the description of the pull request:
 
 
 - A paragraph or two about how you intend for your solution to work
